@@ -4,7 +4,6 @@ using vega.Controllers.Resources;
 using Vega.Models;
 using Vega.Controllers.Resources;
 using System.Linq;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace vega.MapperProfiles
@@ -16,15 +15,20 @@ namespace vega.MapperProfiles
         {
             //Domain to Api Resource
             CreateMap <Make , MakeResource>();
-            CreateMap <Model, ModelResource>();
-            CreateMap<Feature, FeatureResource>();
-            CreateMap<Vechile, VechileResource>().
+            CreateMap<Make, KeyValuePairResource>();
+            CreateMap<Model, KeyValuePairResource>();
+            CreateMap<Feature, KeyValuePairResource>();
+            CreateMap<Vechile, SaveVechileResource>().
                 ForMember(vr => vr.Contact, opt => opt.MapFrom(v => new ContactResource { ContactName = v.ContactName, ContactEmail = v.ContactEmail, ContactPhone = v.ContactPhone }))
                 .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => vf.FeatureId)));
+            CreateMap<Vechile, VechileResource>().
+                  ForMember(vr => vr.Contact, opt => opt.MapFrom(v => new ContactResource { ContactName = v.ContactName, ContactEmail = v.ContactEmail, ContactPhone = v.ContactPhone }))
+                  .ForMember(vr => vr.Make, opt => opt.MapFrom(v=>new Make { Id= v.Model.Make.Id, Name = v.Model.Make.Name}))
+                .ForMember(vr => vr.Features,  opt => opt.MapFrom(v => v.Features.Select(vf => new KeyValuePairResource { Id= vf.FeatureId, Name = vf.Feature.Name})));
 
 
             //Api Resource to Domain.
-            CreateMap<VechileResource, Vechile>().
+            CreateMap<SaveVechileResource, Vechile>().
                 ForMember(v => v.Id, opt => opt.Ignore()).
                 ForMember(v => v.ContactName, opt => opt.MapFrom(vr => vr.Contact.ContactName))
                 .ForMember(v => v.ContactEmail, opt => opt.MapFrom(vr => vr.Contact.ContactEmail))

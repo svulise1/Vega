@@ -11,7 +11,9 @@ export class VechileFormComponent implements OnInit {
     makes: any[];
     models: any[];
     features: any[];
-    vechile:any = {};
+    vechile: any = {
+        features:[]
+    };
     constructor(private vechileService: VechileService) { }
 
   ngOnInit() {
@@ -19,8 +21,21 @@ export class VechileFormComponent implements OnInit {
       this.vechileService.GetFeatures().subscribe(features => this.features = features);
   }
   onMakeChange() {
-      var selectedmake = this.makes.find(m => m.id == this.vechile.make);
-      this.models =   selectedmake? selectedmake.models:[];
+      var selectedmake = this.makes.find(m => m.id == this.vechile.makeId);
+      this.models = selectedmake ? selectedmake.models :[];
+      delete this.vechile.modelId;
+  }
+
+  onFeatureToggle(featureId, $event)
+  {
+      if ($event.target.checked) {
+          this.vechile.features.push(featureId);
+      }
+      
+      else {
+          var removedfeature = this.vechile.features.indexOf(featureId);
+          this.vechile.features.splice(removedfeature, 1);
+      }
   }
 
 }

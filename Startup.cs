@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using vega.Persistence;
 using AutoMapper;
+using Vega.Persistence;
+using Vega.Core;
+
 namespace WebApplicationBasic
 {
     public class Startup
@@ -30,6 +33,8 @@ namespace WebApplicationBasic
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IVechileRepo, VechileRepo>();
             services.AddAutoMapper();
             services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             // Add framework services.

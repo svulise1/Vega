@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -33,6 +34,11 @@ namespace Vega.Models
 
         public DateTime LastUpdate { get; set; }
 
-        public ICollection<VechileFeature> Features{ get; set; }
+        public ICollection<VechileFeature> Features { get; set; }
+
+        public  Vechile()
+        {
+            Features = new Collection<VechileFeature>();
+        }
     }
 }
