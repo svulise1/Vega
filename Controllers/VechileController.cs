@@ -7,20 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using vega.Persistence;
-using Vega.Controllers.Resources;
-using Vega.Models;
-using Vega.Core;
+using vega.Controllers.Resources;
+using vega.Models;
+using vega.Core;
 
-namespace Vega.Controllers
+namespace vega.Controllers
 {
     [Route("/api/vechiles")]
     public class VechileController : Controller
     {
         private readonly IMapper mapper;
-        private readonly VegaDbContext context;
+        private readonly vegaDbContext context;
         private readonly IVechileRepo repository;
         private readonly IUnitOfWork unitofwork;
-        public VechileController(IMapper mapper, VegaDbContext context,IVechileRepo repository,IUnitOfWork unitofwork)
+        public VechileController(IMapper mapper, vegaDbContext context,IVechileRepo repository,IUnitOfWork unitofwork)
         {
             this.mapper = mapper;
             this.context = context;
@@ -33,13 +33,17 @@ namespace Vega.Controllers
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var vechile = mapper.Map<SaveVechileResource, Vechile>(vechileresource);
-            vechile.LastUpdate = DateTime.Now;
-            repository.AddVechile(vechile);
-            vechile = await repository.GetVechile(vechile.Id);
+
+            var Vechiles = mapper.Map<SaveVechileResource, Vechile>(vechileresource);
+            Vechiles.LastUpdate = DateTime.Now;
+
+            repository.AddVechile(Vechiles);
             await unitofwork.Complete();
-            await repository.GetVechile(vechile.Id);
-            var result = mapper.Map<Vechile, VechileResource>(vechile);
+
+            Vechiles = await repository.GetVechile(Vechiles.Id);
+
+            var result = mapper.Map<Vechile, VechileResource>(Vechiles);
+
             return Ok(result);
         }
 
@@ -64,7 +68,7 @@ namespace Vega.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVechile(int id)
         {
-            var vechile = await repository.GetVechile(id, Includerelated: false);
+            var vechile = await repository.GetVechile(id, includeRelated: false);
             if (vechile == null)
                 return NotFound();
             repository.RemoveVechile(vechile);

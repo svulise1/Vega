@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Vega.Controllers.Resources;
+using vega.Controllers.Resources;
 
 namespace vega.Controllers.Resources
 {

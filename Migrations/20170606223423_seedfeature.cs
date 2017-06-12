@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Vega.Migrations
+namespace vega.Migrations
 {
     public partial class seedfeature : Migration
     {

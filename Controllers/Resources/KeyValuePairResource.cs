@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vega.Controllers.Resources
+namespace vega.Controllers.Resources
 {
     public class KeyValuePairResource
     {

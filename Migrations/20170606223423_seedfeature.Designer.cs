@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using vega.Persistence;
 
-namespace Vega.Migrations
+namespace vega.Migrations
 {
-    [DbContext(typeof(VegaDbContext))]
+    [DbContext(typeof(vegaDbContext))]
     [Migration("20170606223423_seedfeature")]
     partial class seedfeature
     {
@@ -17,7 +17,7 @@ namespace Vega.Migrations
                 .HasAnnotation("ProductVersion", "1.1.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Vega.Models.Feature", b =>
+            modelBuilder.Entity("vega.Models.Feature", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();

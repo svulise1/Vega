@@ -7,16 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using vega.Persistence;
-using Vega.Controllers.Resources;
-using Vega.Models;
+using vega.Controllers.Resources;
+using vega.Models;
 
-namespace Vega.Controllers
+namespace vega.Controllers
 {
     public class FeatureController : Controller
     {
-        private readonly VegaDbContext context;
+        private readonly vegaDbContext context;
         private readonly IMapper mapper;
-        public FeatureController(VegaDbContext context , IMapper mapper)
+        public FeatureController(vegaDbContext context , IMapper mapper)
         {
             this.context = context;
             this.mapper = mapper;

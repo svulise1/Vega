@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using vega.Persistence;
 
-namespace Vega.Migrations
+namespace vega.Migrations
 {
-    [DbContext(typeof(VegaDbContext))]
+    [DbContext(typeof(vegaDbContext))]
     [Migration("20170601064157_ConstraintsApplied")]
     partial class ConstraintsApplied
     {

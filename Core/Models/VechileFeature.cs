@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vega.Models
+namespace vega.Models
 {
    [Table("VechileFeatures")]
     public class VechileFeature

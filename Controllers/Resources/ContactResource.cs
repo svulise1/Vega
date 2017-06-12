@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-namespace Vega.Controllers.Resources
+namespace vega.Controllers.Resources
 {
  
         public class ContactResource

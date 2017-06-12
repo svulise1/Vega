@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using vega.Models;
 
-namespace Vega.Models
+namespace vega.Models
 {
     [Table("Vechiles")]
 

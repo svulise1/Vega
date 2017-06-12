@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vega.Models
+namespace vega.Models
 {   
     public class Feature
     {

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using vega.Controllers.Resources;
 
-namespace Vega.Controllers.Resources
+namespace vega.Controllers.Resources
 {
     public class VechileResource
     {

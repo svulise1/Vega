@@ -1,15 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using vega.Models;
-using Vega.Models;
 
 namespace vega.Persistence
 {
-    public class VegaDbContext : DbContext
+    public class vegaDbContext : DbContext
     {
         public DbSet<Make> Makes { get; set; }
         public DbSet<Feature> Features { get; set; }
         public DbSet<Vechile> Vechiles { get; set; }
-        public VegaDbContext(DbContextOptions<VegaDbContext> options)
+        public vegaDbContext(DbContextOptions<vegaDbContext> options)
                 : base(options)
         {
             

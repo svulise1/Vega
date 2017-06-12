@@ -5,30 +5,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using vega.Persistence;
-using Vega.Core;
-using Vega.Models;
+using vega.Core;
+using vega.Models;
 
-namespace Vega.Persistence
+namespace vega.Persistence
 {
     public  class VechileRepo : IVechileRepo
     {
-        private readonly VegaDbContext context;
-        public VechileRepo(VegaDbContext context)
+        private readonly vegaDbContext context;
+        public VechileRepo(vegaDbContext context)
         {
             this.context = context;
         }
-        public async Task<Vechile> GetVechile(int id, bool Includerelated = true)
+        public async Task<Vechile> GetVechile(int id, bool includeRelated = true)
         {
-            if (!Includerelated )
-            {
-                return await context.Vechiles.FindAsync(id);
-            }
 
-            return await context.Vechiles.Include(v => v.Features).
-               ThenInclude(vf => vf.Feature).
-               Include(v => v.Model).
-               ThenInclude(m => m.Make).
-               SingleOrDefaultAsync(v => v.Id == id);
+
+            if (!includeRelated)
+                return await context.Vechiles.FindAsync(id);
+
+            return await context.Vechiles
+              .Include(v => v.Features)
+                .ThenInclude(vf => vf.Feature)
+              .Include(v => v.Model)
+                .ThenInclude(m => m.Make)
+              .SingleOrDefaultAsync(v => v.Id == id);
         }
 
         public  void AddVechile(Vechile vechile)
@@ -40,5 +41,6 @@ namespace Vega.Persistence
         {
             context.Remove(vechile);
         }
+
     }
 }

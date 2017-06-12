@@ -1,10 +1,10 @@
 using AutoMapper;
-using vega.Models;
 using vega.Controllers.Resources;
-using Vega.Models;
-using Vega.Controllers.Resources;
 using System.Linq;
 using System.Collections.Generic;
+using vega.Models;
+using vega.Controllers;
+using vega.Persistence;
 
 namespace vega.MapperProfiles
 

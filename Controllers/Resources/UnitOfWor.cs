@@ -8,17 +8,17 @@ using vega.Core;
 
 namespace vega.Persistence
 {
-    public class UnitOfWork :IUnitOfWork
+    public class UnitOfWor : IUnitOfWork
     {
         private readonly vegaDbContext context;
-        public UnitOfWork(vegaDbContext context)
+        public UnitOfWor(vegaDbContext context)
         {
             this.context = context;
-        }   
-        public async  Task Complete()
-        {
-             await context.SaveChangesAsync();
         }
-        
+        public async Task Complete()
+        {
+            await context.SaveChangesAsync();
+        }
+
     }
 }
