@@ -11,7 +11,7 @@ enableProdMode();
 export default createServerRenderer(params => {
     const providers = [
         { provide: INITIAL_CONFIG, useValue: { document: '<app></app>', url: params.url } },
-        { provide: 'ORIGIN_URL', useValue: params.origin }
+        { provide: 'ajaxHost', useValue: params.origin }
     ];
 
     return platformDynamicServer(providers).bootstrapModule(AppModule).then(moduleRef => {

@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { CounterComponent } from './components/counter/counter.component';
 import { VechileFormComponent } from './components/vechile-form/vechile-form.component';
 import { VechileService } from "./services/vechile.service";
+import { ToastyModule } from 'ng2-toasty';
 export const sharedConfig: NgModule = {
     bootstrap: [AppComponent],
     declarations: [
@@ -16,17 +17,23 @@ export const sharedConfig: NgModule = {
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        VechileFormComponent
+        VechileFormComponent,
+     
     ],
     imports: [
+
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'vechiles/new', component: VechileFormComponent },
+            { path: 'vechiles/:id', component: VechileFormComponent },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
         ]),
-        FormsModule
+        FormsModule,
+  
+
+    
     ]
 };
