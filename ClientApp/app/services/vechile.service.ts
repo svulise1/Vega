@@ -38,4 +38,9 @@ export class VechileService {
             .map(res => res.json());
     }
 
+    GetVechiles() {
+        return this.http.get('http://localhost:5000/api/vechiles/')
+            .map(res => res.json());
+    }
+
 }

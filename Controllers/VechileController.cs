@@ -87,5 +87,15 @@ namespace vega.Controllers
 
 
         }
+        [HttpGet]
+
+        public async Task<IActionResult> Getvechilelist()
+        {
+            var vechile = await repository.GetVechiles();
+            var result = mapper.Map< IEnumerable<Vechile>, IEnumerable<VechileResource>>(vechile);
+                return Ok(result);
+        }
+
+
     }
 }

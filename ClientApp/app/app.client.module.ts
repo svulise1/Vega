@@ -6,13 +6,15 @@ import { sharedConfig } from './app.module.shared';
 import { MycomponentComponent } from './components/components/mycomponent/mycomponent.component';
 import { VechileFormComponent } from './components/vechile-form/vechile-form.component';
 import { VechileService } from "./services/vechile.service";
+import { VechileListComponent } from './components/vechile-list/vechile-list.component';
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
     declarations: [
        ...sharedConfig.declarations,
        MycomponentComponent,
-       VechileFormComponent
+       VechileFormComponent,
+       VechileListComponent
        ],
     imports: [
         BrowserModule,

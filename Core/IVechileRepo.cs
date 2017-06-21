@@ -12,5 +12,6 @@ namespace vega.Core
          Task<Vechile> GetVechile(int id, bool includeRelated = true);
         void AddVechile(Vechile Vechile);
         void RemoveVechile(Vechile vechile);
+        Task<IEnumerable<Vechile>> GetVechiles();
     } 
 }

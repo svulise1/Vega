@@ -42,5 +42,15 @@ namespace vega.Persistence
             context.Remove(vechile);
         }
 
+        public async Task<IEnumerable<Vechile>> GetVechiles()
+        {
+
+           return await context.Vechiles
+              .Include(v => v.Features)
+                .ThenInclude(vf => vf.Feature)
+              .Include(v => v.Model)
+                .ThenInclude(m => m.Make).
+                ToListAsync();
+        }
     }
 }
