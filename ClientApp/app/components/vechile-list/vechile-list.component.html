@@ -1,27 +1,38 @@
 <h2>VECHILES</h2>
 <a [routerLink]="['/vechiles/new']" class="btn btn-primary"> New Vechiles</a>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Model</th>
-        <th>Make</th>
-        <th>Contact</th>
-    </tr>
-    <tr *ngFor="let v of vechiles">
-        <td>
-            {{v.id}} 
-        </td>
-        <td>
-            {{v.model.name}}
-        </td>
-        <td>
-            {{v.make.name}}
-        </td>
-        <td>
-            {{v.contact.contactName}}
-        </td>
-        <td>
-            <a [routerLink]="['/vechiles/',v.id]">View</a>
-        </td>
-    </tr>
-</table>
+<div class="well">
+    <div class="form-group">
+        <label for="make">Make</label>
+        <select id="make" class="form-control" [(ngModel)]="filter.makeId" (change)="onFilterChange()">
+            <option value=""></option>
+            <option *ngFor="let m of makes" value="{{m.id}}">{{m.name}}</option>
+        </select>
+    </div>
+    <button class="btn btn-default"(click)="resetFilter()">Reset</button>
+</div>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Model</th>
+            <th>Make</th>
+            <th>Contact</th>
+            <th>Details</th>
+        </tr>
+        <tr *ngFor="let v of vechiles">
+            <td>
+                {{v.id}}
+            </td>
+            <td>
+                {{v.model.name}}
+            </td>
+            <td>
+                {{v.make.name}}
+            </td>
+            <td>
+                {{v.contact.contactName}}
+            </td>
+            <td>
+                <a [routerLink]="['/vechiles/',v.id]">View</a>
+            </td>
+        </tr>
+    </table>

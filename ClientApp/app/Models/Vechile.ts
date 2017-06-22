@@ -1,4 +1,4 @@
-﻿export interface KeyValuePair 
+﻿    export interface KeyValuePair 
 {
     id: number;
     name: string;
